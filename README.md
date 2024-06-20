@@ -1,3 +1,126 @@
+
+About The Project
+
+User Form Validation. React js cookie Library import for user stored data (name, age, email) to ensure browser compatibility, provide built-in security features. DOM updating with re-rendering in function components in responses to changes in state with useEffect. UI Animation features.
+
+
+
+Video
+https://www.linkedin.com/feed/update/urn:li:activity:7209386338901458944/
+https://www.linkedin.com/feed/update/urn:li:activity:7209387589630390274/
+https://www.linkedin.com/feed/update/urn:li:activity:7209388593151115264/
+
+
+
+Usuage
+Here is an example of how to import the useEffect hook that runs the code once the function component renders. Contains an Array denpendency 
+that updates the state varaiables ( name, password, confirmPassword, age, email ) once it re-renders.
+
+Basic Usuage.
+import React, { useState , useEffect, useRef } from 'react';
+
+function FormApp() {
+    const [name, setName] = useState('')
+    const [password, setPassword] = useState('')
+    const [confirmPassword, setConfirmPassword] = useState('')
+    const [age, setAge] = useState('')
+    const [email, setEmail] = useState('')
+    const input = useRef(null)    
+    const formRef = useRef(null) 
+      useEffect(() => {      
+          if(input.current) {   
+            input.current.focus()
+          }
+      }, [])                  // use the ref attribute is assigned to the input element that the window focus on.
+        useEffect(() => {
+            localStorage.setItem('name', JSON.stringify(name));
+        }, [name])      // second argument to re-render once the value changes.
+        useEffect(() => {
+            localStorage.setItem('password', JSON.stringify(password));
+        }, [password])
+        useEffect(() => {
+          localStorage.setItem('confirm-password', JSON.stringify(confirmPassword))
+        }, [confirmPassword])
+        useEffect(() => {
+            localStorage.setItem('age', JSON.stringify(age))
+        }, [age])
+        useEffect(() => {
+            localStorage.setItem('email', JSON.stringify(email))
+        }, [email])
+        
+
+
+
+
+REACTjs Cookie Library
+The Reactjs Cookie Library Import assist with the browser compatibility with built secuirty features. 
+
+
+Usuage
+import Cookies from 'js-cookie'
+Import the Reactjs library in your component.
+    // function to set cookies. use remove method to delete the password cookie from the server
+            const setCookies = (name, value, options) => {
+                Cookies.set(name, value, options)
+                Cookies.remove('password', password)
+            }
+            const UserSubmitData = (event) => {
+                     event.preventDefault();
+                    if(password !== confirmPassword) {
+                        alert('Password does not match Confirm Password');
+                        setPassword('')
+                        setConfirmPassword('')
+                        return false;
+                    } else {
+                      alert('Password Accepted!')
+                      alert('Form Data Was Submitted Successfully');
+                      const cookiesOptions = {
+                        expires: 7, // expires in 7 days
+                        secure: true, // Cookies are sent only over HTTPS
+                        sameSite: 'Strict', // or 'Lax'
+                        httpOnly: false, // Cannot be accessed vis JavaScript
+                        path: '/' ,// Accessible throughout the entire website
+                      };
+                      setCookies('name', name, cookiesOptions);
+                      setCookies('age', age, cookiesOptions)
+                      setCookies('email', email, cookiesOptions)
+                      //reset the form when the user submits the data
+                      formRef.current.reset();
+                      setName('');
+                      setPassword('')
+                      setConfirmPassword('')
+                      setAge('')
+                      setEmail('')
+                    }
+            }
+
+
+
+Development.
+To store cookies for broswer compatiblity from the react js-library. 
+npm install js-cookie
+
+
+License: 
+This project is under the MIT License
+
+Author
+[Andrew Johnson] - [andrewjohnson9393@gmail.com] - [ https://www.linkedin.com/in/andrew-johnson-64632199/ ] 
+
+
+
+
+
+
+Images:
+![Laptop Screen](https://github.com/jesusfaithandwordisinmyheartalways/UserFormValidation-ReactJs/assets/90214404/58ea6939-1b9b-486e-b3e1-436f820b6243)
+
+
+![Tablet Screen](https://github.com/jesusfaithandwordisinmyheartalways/UserFormValidation-ReactJs/assets/90214404/ff1354aa-ab42-4d73-aecd-223465aa4b81)
+
+![Mobile Screen](https://github.com/jesusfaithandwordisinmyheartalways/UserFormValidation-ReactJs/assets/90214404/217b2910-60aa-4249-880e-84d821270a21)
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
