@@ -12,12 +12,19 @@ https://www.linkedin.com/feed/update/urn:li:activity:7209388593151115264/
 
 
 
-Usuage
+
+
+
+Usage
 Here is an example of how to import the useEffect hook that runs the code once the function component renders. Contains an Array denpendency 
 that updates the state varaiables ( name, password, confirmPassword, age, email ) once it re-renders.
 
 Basic Usuage.
 import React, { useState , useEffect, useRef } from 'react';
+
+
+
+
 
 function FormApp() {
     const [name, setName] = useState('')
@@ -31,7 +38,7 @@ function FormApp() {
           if(input.current) {   
             input.current.focus()
           }
-      }, [])                  // use the ref attribute is assigned to the input element that the window focus on.
+      }, [])                  
         useEffect(() => {
             localStorage.setItem('name', JSON.stringify(name));
         }, [name])      // second argument to re-render once the value changes.
@@ -57,8 +64,12 @@ The Reactjs Cookie Library Import assist with the browser compatibility with bui
 
 
 Usuage
+
 import Cookies from 'js-cookie'
 Import the Reactjs library in your component.
+
+
+
     // function to set cookies. use remove method to delete the password cookie from the server
             const setCookies = (name, value, options) => {
                 Cookies.set(name, value, options)
@@ -106,6 +117,9 @@ This project is under the MIT License
 
 Author
 [Andrew Johnson] - [andrewjohnson9393@gmail.com] - [ https://www.linkedin.com/in/andrew-johnson-64632199/ ] 
+
+
+
 
 
 
